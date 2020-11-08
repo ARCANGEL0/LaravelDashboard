@@ -1,36 +1,30 @@
-# LaravelPanel
+<p align="center"> <img src="logo.png?sanitize=true" alt="Logotype" height="250px"></p><p align="center"> []<img src="https://img.shields.io/badge/PT--BR-%20-brightgreen">](LEIAME.md) </p>
 
-Este é um projeto pessoal para realização de testes no Laravel, utilizando o modelo de desenvolvimento CRUD, manipulação de dados SQL através do Laravel Eloquent e os controladores do framework, simulando um painel de controle para ser usado como sistema de gerenciamento em um ambiente comercial de contabilidade para controlar clientes e propostas em uma empresa. 
+LaravelPanel
+============
 
+This is a personal project for some testings with Laravel using CRUD model, for manipulating SQL data through Laravel Eloquent and understanding more about how the framework's controllers work, making a simulation of a commercial ambient and creating a control panel that is able to manage clients and proposals in a company
 
+Structure
+=========
 
+Since my intention was only to study a bit more about Laravel, i just focused on the back-end, using a dashboard template, thus the panel only has 3 pages
 
-# Estrutura 
+###### The 1st page has some informations about the project, and indicators showing in real time the number of proposals and clients, and also simulates the amount of pending contracts and negotiations.
 
-Com a intenção de apenas realizar testes em nível back-end, o painel apresenta apenas 3 páginas.
+###### The 2nd page has a datatable listing all the clients of that company, with the default actions like Create, delete, edit and show all the proposals linked to that client.
 
-###### A 1º página contém além das informações do projeto, indicadores para mostrar o Nº de propostas e clientes atuais, e simular o Nº de contratos pendentes e negociações solicitadas
+###### The 3rd page has a datatable listing all the proposals made to the company, with the possiblity of filtering through proposal status and client name, also with standard actions like creating new ones, deleting and editing.
 
-###### A 2º contém uma tabela de dados listando os clientes da empresa, com as devidas ações para criar, apagar, editar, e ver todas as propostas atreladas ao cliente e questão
+The database structure was developed following CRUD's model, so both CLIENTS and PROPOSALS have their own models with all the necessary definitions and stuff.
 
-###### A 3º contém uma tabela de dados listando todas as propostas da empresa, com filtros para o nome do cliente e o status (Ativo/Inativo) da proposta, também com as ações básicas para editar, apagar e etc. 
+Usage
+=====
 
-A estruturização do banco de dados foi desenvolvida seguindo o modelo CRUD, então são feitos modelos tanto para CLIENTES quanto PROPOSTAS, com as definições 
-dos campos no modelo, e a atribuição da chave estrangeira para referenciação do cliente à proposta. 
+First, you must configure the .env file to set your database configurations to connect, and SMTP aswell if you desire. After configuring .env file to connect to your database, run the following command
 
+> $ php artisan migrate
 
+to run the migrations and create the tables, then run > $ php artisan serve
 
-
-# Utilização
-
-É preciso definir no arquivo .env as suas configurações do banco de dados para conexão, e as de SMTP para utilização do email. 
-Após definir o seu Banco de dados no projeto, execute o comando
-> php artisan migrate
-
-para gerar as migrações e criar as tabelas.
-
-Depois execute
-> php artisan serve 
-
-para rodar o servidor e executar o projeto
-
+to run the server and execute the project.
