@@ -1,4 +1,4 @@
-<p align="center"> <img src="logo.png?sanitize=true" alt="Logotype" height="250px"></p><p align="center"> <a href="https://github.com/Ryuusakii/LaravelDashboard/blob/master/LEIAME.md"><img src="https://img.shields.io/badge/PT--BR-%20-brightgreen"/>]</a> </p>
+<p align="center"> <img src="logo.png?sanitize=true" alt="Logotype" height="250px"></p><p align="center"> <a href="https://github.com/Ryuusakii/LaravelDashboard/blob/master/LEIAME.md"><img src="https://img.shields.io/badge/PT--BR-%20-brightgreen"/></a> </p>
 
 LaravelPanel
 ============

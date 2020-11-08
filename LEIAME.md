@@ -1,4 +1,4 @@
-<p align="center"> <img src="logo.png?sanitize=true" alt="Logotype" height="250px"></p><p align="center"> <a href="https://github.com/Ryuusakii/LaravelDashboard/blob/master/README.md"><img src="https://img.shields.io/badge/EN--US-%20-brightgreen"/>]</a> </p>
+<p align="center"> <img src="logo.png?sanitize=true" alt="Logotype" height="250px"></p><p align="center"> <a href="https://github.com/Ryuusakii/LaravelDashboard/blob/master/README.md"><img src="https://img.shields.io/badge/EN--US-%20-brightgreen"/></a> </p>
 
 LaravelPanel
 ============
@@ -21,10 +21,14 @@ A estruturização do banco de dados foi desenvolvida seguindo o modelo CRUD, en
 Utilização
 ==========
 
-É preciso definir no arquivo .env as suas configurações do banco de dados para conexão, e as de SMTP para utilização do email. Após definir o seu Banco de dados no projeto, execute o comando > $ php artisan migrate
+É preciso definir no arquivo .env as suas configurações do banco de dados para conexão, e as de SMTP para utilização do email. Após definir o seu Banco de dados no projeto, execute o comando
+
+> $ php artisan migrate
 
 para gerar as migrações e criar as tabelas.
 
-Depois execute > $ php artisan serve
+Depois execute
+
+> $ php artisan serve
 
 para rodar o servidor e executar o projeto
