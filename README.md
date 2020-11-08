@@ -1,4 +1,4 @@
-<p align="center"> <img src="logo.png?sanitize=true" alt="Logotype" height="250px"></p><p align="center"> []<img src="https://img.shields.io/badge/PT--BR-%20-brightgreen">](LEIAME.md) </p>
+<p align="center"> <img src="logo.png?sanitize=true" alt="Logotype" height="250px"></p><p align="center"> []<img src="https://img.shields.io/badge/PT--BR-%20-brightgreen">](https://github.com/Ryuusakii/LaravelDashboard/blob/master/LEIAME.md) </p>
 
 LaravelPanel
 ============
@@ -25,6 +25,8 @@ First, you must configure the .env file to set your database configurations to c
 
 > $ php artisan migrate
 
-to run the migrations and create the tables, then run > $ php artisan serve
+to run the migrations and create the tables, then run
+
+> $ php artisan serve
 
 to run the server and execute the project.
