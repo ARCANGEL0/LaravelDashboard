@@ -241,11 +241,13 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+          ['header' => ''],
+          ['header' => ''],
         [
             'text'        => 'Início',
             'url'         => '',
             'icon'        => 'fa fa-fw fa-home',
-            
+
         ],
         ['header' => ''],
         [
@@ -259,7 +261,7 @@ return [
             'url'  => 'propostas',
             'icon' => 'fas fa-fw fa-comments-dollar',
         ],
-       
+
     ],
 
     /*

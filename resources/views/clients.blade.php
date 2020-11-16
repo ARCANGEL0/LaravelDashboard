@@ -6,7 +6,7 @@
     a{
         color: #fff;
     }
-   
+
 td .btn {
     font-size: 12px;
     margin-bottom: 10px;
@@ -27,10 +27,10 @@ td .btn {
     width: 100%;
     height: 2.1rem;
     margin-bottom: 1.2rem;
-  
+
 }
-.wrapper, body, html{
-width: 1500px;
+html{
+width: 150vw;;
 }
 .showbtn{
 
@@ -42,15 +42,15 @@ margin-right: 20px;
     var i = documento.value.length;
     var saida = mascara.substring(0,1);
     var texto = mascara.substring(i)
-    
+
     if (texto.substring(0,1) != saida){
               documento.value += texto.substring(0,1);
     }
-    
+
   }
   </script>
 <h1 class="h3 mb-0 text-gray-800">Clientes</h1> &nbsp;&nbsp;&nbsp; <br>
-<button type="button" class="btn btn-success" 
+<button type="button" class="btn btn-success"
 data-toggle="modal" data-target="#myModal1"> <i class="fa fa-plus"></i> &nbsp; Criar</button>
 
 
@@ -58,17 +58,17 @@ data-toggle="modal" data-target="#myModal1"> <i class="fa fa-plus"></i> &nbsp; C
 
 <div id="myModal1" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
-    
-     
+
+
         <div class="modal-content">
           <div class="modal-header">
-            
+
             <h4 class="modal-title">Cadastar cliente</h4>
           </div>
           <div class="modal-body cadastroform">
           <form action="{{url('/clientes/cadastrar') }}" id="modalform">
             {{csrf_field()}}
-           
+
     <label for="cnpj">CNPJ</label>
     <input  maxlength="18" OnKeyPress="formatar('##.###.##/####-##', this)"type="text" id="cnpj" name="cnpj" >
     <br>
@@ -96,19 +96,19 @@ data-toggle="modal" data-target="#myModal1"> <i class="fa fa-plus"></i> &nbsp; C
     <label for="celular">Celular</label>
     <input maxlength="13" OnKeyPress="formatar('## ####-#####', this)" type="text" name="celular">
     <br>
-    
-    
-    
-    
+
+
+
+
           </div>
           <div class="modal-footer">
           <button type="submit" name="cadastrar" class="btn btn-success">Cadastrar</button>
-    
+
             <button type="button" class="btn btn-dark" data-dismiss="modal">Fechar</button>
             </form>
           </div>
         </div>
-    
+
       </div>
     </div>
     @if (session()->has('success'))
@@ -119,12 +119,12 @@ data-toggle="modal" data-target="#myModal1"> <i class="fa fa-plus"></i> &nbsp; C
 @endif
 @if (session()->has('deletesuccess'))
 <script>alert('Usuário deletado!')</script>
-    
+
 @endif
 
 @csrf
     <table class="table table-bordered display" id="tabela" width="100%" cellspacing="0">
-      <form action="" id="myform">    
+      <form action="" id="myform">
     <thead>
      <tr>
        <th>ID</th>
@@ -142,10 +142,10 @@ data-toggle="modal" data-target="#myModal1"> <i class="fa fa-plus"></i> &nbsp; C
            <th>Ações</th>
 </tr>
     </thead>
-  
+
   <tbody>
-  
-   
+
+
         @foreach ($data as $item)
         <tr>
           <td>{{ $item->id}}</td>
@@ -167,82 +167,82 @@ data-toggle="modal" data-target="#myModal1"> <i class="fa fa-plus"></i> &nbsp; C
 
         </tr>
             @endforeach
-    
 
-  
-  
+
+
+
   </tbody>
   </table>
   </form>
 {{-- APAGAR --}}
 <div id="deletar" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
-  
- 
+
+
       <div class="modal-content">
         <div class="modal-header">
-          
+
           <h4 class="modal-title">Deletar cliente</h4>
         </div>
         <div class="modal-body cadastroform">
 
         <form class="deleteform" action="/clientes/deletar" method="POST" id="deleteform" >
           {{ csrf_field() }}
- 
+
           {{ method_field('POST') }}
-          
+
 
        <input type="hidden" value="" id="iddel" name="iddel">
        <input id="cnpjdelete" value="" type="hidden" name="cnpjdelete">
-     
+
        <input id="razaosocialdelete" type="hidden" name="razaosocialdelete">
-     
+
        <input id="nomefantasiadelete" type="hidden" name="nomefantasiadelete">
-     
+
        <input id="enderecodelete" type="hidden" name="enderecodelete">
-     
+
        <input id="emaildelete" type="hidden" name="emaildelete">
-     
+
        <input id="telefonedelete" type="hidden" name="telefonedelete">
-     
+
        <input id="nomeresponsaveldelete" type="hidden" name="nomeresponsaveldelete">
-     
+
        <input id="cpfdelete" type="hidden" name="cpfdelete">
-     
+
        <input id="celulardelete" type="hidden" name="celulardelete">
-     
+
   <h5>Você tem certeza que deseja deletar este cliente?</h5>
-  
+
         </div>
         <div class="modal-footer">
         <button type="submit" class="btn btn-danger apagar">Deletar</button>
-  
+
           <button type="button" class="btn btn-dark" data-dismiss="modal">Fechar</button>
           </form>
         </div>
       </div>
-  
+
     </div>
   </div>
 {{-- fimAPAGAR --}}
   <div id="editar" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
-    
-   
+
+
         <div class="modal-content">
           <div class="modal-header">
-            
+
             <h4 class="modal-title">Editar cliente</h4>
           </div>
           <div class="modal-body cadastroform">
 
           <form class="editform" action="/clientes/editar" method="POST" id="editarform" >
             {{ csrf_field() }}
-   
-            
+
+
 
          <input type="hidden" value="" id="id" name="id">
-         
+
     <label for="cnpj">CNPJ</label>
     <input  maxlength="18" OnKeyPress="formatar('##.###.##/####-##', this)"type="text" id="cnpjedit" name="cnpjedit" >
     <br>
@@ -270,22 +270,22 @@ data-toggle="modal" data-target="#myModal1"> <i class="fa fa-plus"></i> &nbsp; C
     <label for="celular">Celular</label>
     <input maxlength="13" OnKeyPress="formatar('## ####-#####', this)" type="text" id="celularedit" name="celularedit">
     <br>
-  
-    
-    
-    
+
+
+
+
           </div>
           <div class="modal-footer">
           <button type="submit" class="btn btn-success atualizar">Atualizar</button>
-    
+
             <button type="button" class="btn btn-dark" data-dismiss="modal">Fechar</button>
             </form>
           </div>
         </div>
-    
+
       </div>
     </div>
-    
+
 @endsection
 
 @section('js')
@@ -293,12 +293,12 @@ data-toggle="modal" data-target="#myModal1"> <i class="fa fa-plus"></i> &nbsp; C
 <script type="text/javascript">
 
 $(document).ready(function() {
-  
+
   var searchHash = location.hash.substr(1),
         searchString = searchHash.substr(searchHash.indexOf('search='))
 		                  .split('&')[0]
 		                  .split('=')[1];
-  
+
  var table = $('#tabela').DataTable({
 
     "language": {
@@ -320,16 +320,16 @@ $(document).ready(function() {
         "sLast": "Último"
     },
     "oAria": {
-        
 
-        
+
+
         "sSortAscending": ": Ordenar colunas de forma ascendente",
         "sSortDescending": ": Ordenar colunas de forma descendente"
     } },
- 
 
- });  
- 
+
+ });
+
 
 table.on('click','.deletebtn', function(){
 $('#deletar').modal('show');
@@ -359,7 +359,7 @@ table.on('click', '.showbtn', function(){
   var cliente = table.row($tr).data()[3];
 
  window.location.href = '/propostas?cliente=' + cliente;
-  
+
 
 })
  table.on('click','.editbtn',function(){
@@ -381,7 +381,7 @@ table.on('click', '.showbtn', function(){
   $('#nomeresponsaveledit').val(data[7]);
   $('#cpfedit').val(data[8]);
   $('#celularedit').val(data[9]);
-  
+
 
 $('#editarform').attr('action','clientes/editar/'+data[0]);
 $('#editar').modal('show');
@@ -389,8 +389,7 @@ $('#editar').modal('show');
 
 
 });
- 
+
 </script>
 
 @endsection
-

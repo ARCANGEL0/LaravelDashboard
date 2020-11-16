@@ -6,7 +6,7 @@
     a{
         color: #fff;
     }
-   
+
 td .btn {
     font-size: 12px;
     margin-bottom: 10px;
@@ -30,7 +30,7 @@ td .btn {
     width: 100%;
     height: 2.1rem;
     margin-bottom: 1.2rem;
-  
+
 }
 #modalform input,#editarform input {
     border-radius: 0.4rem;
@@ -38,7 +38,7 @@ td .btn {
     width:100%;
     height: 2.1rem;
     margin-bottom: 1.2rem;
-  
+
 }
 .input-group .form-control {
   border-radius: 0 !important;
@@ -61,13 +61,14 @@ input::-webkit-inner-spin-button {
 </style>
 
 <h1 class="h3 mb-0 text-gray-800">Propostas</h1> &nbsp;&nbsp;&nbsp; <br>
-<button type="button" class="btn btn-success" 
+<button type="button" class="btn btn-success"
 data-toggle="modal" data-target="#myModal1"> <i class="fa fa-plus"></i> &nbsp; Criar</button>
-<select class="btn btn-info" name="namefiltro" id="namefiltro" 
+<select class="btn btn-info" name="namefiltro" id="namefiltro"
 onchange="document.location.href = '/propostas?cliente=' + this.value"
 data-column="1">
- 
-  <option selected value="">Cliente</option>
+
+  <option selected value=""> Todos os clientes</option>
+
   @foreach ($data as $proposta)
   <option value="{{ $proposta->Cliente }}">{{ $proposta->Cliente }}</option>
 @endforeach
@@ -81,17 +82,17 @@ data-column="1">
 
 <div id="myModal1" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
-    
-     
+
+
         <div class="modal-content">
           <div class="modal-header">
-            
+
             <h4 class="modal-title">Cadastar cliente</h4>
           </div>
           <div class="modal-body cadastroform">
           <form action="{{url('/propostas/cadastrar') }}"  id="modalform">
             {{csrf_field()}}
-           
+
     <label for="cliente">Cliente</label>
     <select name="clientes" id="clientes">
     <option selected disabled hidden value="">&nbsp;&nbsp;&nbsp;&nbsp;Escolha um cliente</option>
@@ -118,7 +119,7 @@ data-column="1">
     </div>
 
     <br>
-    <div class="pricegroup"> 
+    <div class="pricegroup">
     <label for="parcelas">Quantidade de parcelas</label>
 <select onblur="Calcular()" name="parcelas" id="parcelas">
     <option selected hidden value="">Selecione uma opção</option>
@@ -141,7 +142,7 @@ data-column="1">
         <span class="input-group-text" id="basic-addon3">R$</span>
       </div>
     <input class="form-control" onblur="Calcular()" type="number" step="0.01" id="valor" name="valor" placeholder="0,00">
-  
+
   </div>
     <br>
     <label for="paginicio">Data de início do pagamento</label>
@@ -151,21 +152,21 @@ data-column="1">
     <input onblur="Calcular()"  type="number" name="diaparcela" min="1" max="30">
 
     <br>
-    
+
     <br>
-    
-    
-    
-    
+
+
+
+
           </div>
           <div class="modal-footer">
           <button type="submit" name="cadastrar" class="btn btn-success cadastrar">Cadastrar</button>
-    
+
             <button type="button" class="btn btn-dark" data-dismiss="modal">Fechar</button>
             </form>
           </div>
         </div>
-    
+
       </div>
     </div>
     @if (session()->has('success'))
@@ -176,14 +177,14 @@ data-column="1">
 @endif
 @if (session()->has('deletesuccess'))
 <script>alert('Proposta deletada!')</script>
-    
+
 @endif
 
 @csrf
 
 <br>
     <table class="table table-bordered display" id="tabela" width="100%" cellspacing="0">
-      <form action="" id="myform">    
+      <form action="" id="myform">
     <thead>
      <tr>
        <th>ID</th>
@@ -191,7 +192,7 @@ data-column="1">
     <th>Endereço da obra</th>
     <th>Valor Total (R$)</th>
     <th>Qnt das parcelas</th>
-<th>Valor Parcelas (R$)</th>   
+<th>Valor Parcelas (R$)</th>
  <th>Início de pagamento</th>
     <th>Dia da mensalidade</th>
                            <th>Status</th>
@@ -201,10 +202,10 @@ data-column="1">
            <th>Ações</th>
 </tr>
     </thead>
-  
+
   <tbody>
-  
-   
+
+
         @foreach ($data as $item)
         <tr>
           <td>{{ $item->id}}</td>
@@ -219,36 +220,36 @@ data-column="1">
             <td>{{ $item->created_at }}</td>
             <td>{{ $item->updated_at }}</td>
           <td><a class="btn btn-outline-warning editbtn " href="#">Editar</a>
-            
+
             <a class="btn btn-outline-danger deletebtn" href="#">Excluir</a>
           </td>
 
         </tr>
             @endforeach
-    
 
-  
-  
+
+
+
   </tbody>
   </table>
   </form>
 {{-- APAGAR --}}
 <div id="deletar" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg">
-  
- 
+
+
       <div class="modal-content">
         <div class="modal-header">
-          
+
           <h4 class="modal-title">Deletar cliente</h4>
         </div>
         <div class="modal-body cadastroform">
 
         <form class="deleteform" action="/delete" method="POST" id="deleteform" >
           {{ csrf_field() }}
- 
+
           {{ method_field('POST') }}
-          
+
 
        <input type="hidden" value="" id="iddel" name="iddel">
        <select hidden name="clientesdel" id="clientesdel">
@@ -256,17 +257,17 @@ data-column="1">
       @foreach ($clientes as $clientevalue)
           <option value="{{ $clientevalue->{'Nome Fantasia'} }}">{{ $clientevalue->{'Nome Fantasia'} }}</option>
       @endforeach
-   
-   
+
+
    </select>
-  
-   
+
+
        <input  type="hidden" id="enderecodel" name="enderecodel">
-   
-     
+
+
          <input onblur="CalcularEdit()" class="form-control" id="valortotaldel" name="valortotaldel" type="hidden" step="0.01" placeholder="R$ 0,00">
-     
-     
+
+
    <select hidden name="parcelasdel" id="parcelasdel">
        <option selected hidden value="">Selecione uma opção</option>
        <option value="2">2x</option>
@@ -279,62 +280,62 @@ data-column="1">
    <option value="48">48x</option>
    <option value="60">60x</option>
    <option value="72">72x</option>
-   
-   </select>    
+
+   </select>
 
 <input class="form-control" onblur="CalcularEdit()" type="hidden" step="0.01" id="valordel" name="valordel" placeholder="R$ 0,00">
 
- 
+
        <input onblur="CalcularEdit()" type="hidden" id="paginiciodel" name="paginiciodel">
        <input onblur="CalcularEdit()" type="hidden" id="diaparceladel" name="diaparceladel" max="30">
-   
-   
+
+
 
        <select hidden name="statusdel" id="statusdel">
        <option value="Ativo">Ativo</option>
        <option value="Inativo">Inativo</option></select>
 
-     
+
   <h5>Você tem certeza que deseja deletar esta proposta?</h5>
-  
+
         </div>
         <div class="modal-footer">
         <button type="submit" class="btn btn-danger apagar">Deletar</button>
-  
+
           <button type="button" class="btn btn-dark" data-dismiss="modal">Fechar</button>
           </form>
         </div>
       </div>
-  
+
     </div>
   </div>
 {{-- fimAPAGAR --}}
   <div id="editar" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
-    
-   
+
+
         <div class="modal-content">
           <div class="modal-header">
-            
+
             <h4 class="modal-title">Editar proposta</h4>
           </div>
           <div class="modal-body cadastroform">
 
           <form class="editform" action="/propostas/editar" method="POST" id="editarform" >
             {{ csrf_field() }}
-   
+
             <label for="clientes">Cliente</label>
             <select name="clientesedit" id="clientesedit">
             <option selected disabled hidden value="">&nbsp;&nbsp;&nbsp;&nbsp;Escolha um cliente</option>
            @foreach ($clientes as $clientevalue)
                <option value="{{ $clientevalue->{'Nome Fantasia'} }}">{{ $clientevalue->{'Nome Fantasia'} }}</option>
            @endforeach
-        
-        
+
+
         </select>
             <br>
-        
-        
+
+
             <label for="enderecoedit">Endereço da obra</label>
             <input  type="text" id="enderecoedit" name="enderecoedit">
             <br>
@@ -345,11 +346,11 @@ data-column="1">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon3">R$</span>
               </div>
-          
+
               <input onblur="CalcularEdit()" class="form-control" id="valortotaledit" name="valortotaledit" type="number" step="0.01" placeholder="R$ 0,00">
               </div>
-          
-          
+
+
             <br>
             <label for="parcelasedit">Quantidade de parcelas</label>
         <select name="parcelasedit" id="parcelasedit">
@@ -364,7 +365,7 @@ data-column="1">
         <option value="48">48x</option>
         <option value="60">60x</option>
         <option value="72">72x</option>
-        
+
         </select>    <br>
             <label for="valoredit">Valor das parcelas</label>
              <div class="input-group mb-3">
@@ -372,34 +373,34 @@ data-column="1">
         <span class="input-group-text" id="basic-addon3">R$</span>
       </div>
     <input class="form-control" onblur="CalcularEdit()" type="number" step="0.01" id="valoredit" name="valoredit" placeholder="R$ 0,00">
-  
+
   </div> <br>
             <label for="paginicioedit">Data de início do pagamento</label>
             <input onblur="CalcularEdit()" type="date" id="paginicioedit" name="paginicioedit">
             <br>
             <label for="diaparcelaedit">Dia de pagamento das parcelas</label>
             <input onblur="CalcularEdit()" type="number" id="diaparcelaedit" name="diaparcelaedit" max="30">
-        
-        
+
+
             <br>
-    
+
             <label for="status">Status</label>
             <select name="statusedit" id="statusedit">
             <option value="Ativo">Ativo</option>
             <option value="Inativo">Inativo</option></select>
-    
+
           </div>
           <div class="modal-footer">
           <button type="submit" class="btn btn-success atualizar">Atualizar</button>
-    
+
             <button type="button" class="btn btn-dark" data-dismiss="modal">Fechar</button>
             </form>
           </div>
         </div>
-    
+
       </div>
     </div>
-    
+
 @endsection
 
 @section('js')
@@ -408,7 +409,7 @@ data-column="1">
 
 
 $(document).ready(function (){
-  
+
   var hoje = new Date();
 var dd = String(hoje.getDate()).padStart(2, '0');
 var mm = String(hoje.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -428,7 +429,7 @@ Calcular =  function() {
 CalcularEdit = function() {
   var valor = document.getElementById('valoredit').value;
   var parcela= document.getElementById('parcelasedit').value;
-  
+
   document.getElementById('valortotaledit').value = valor*parcela;
 
 }
@@ -456,15 +457,15 @@ CalcularEdit = function() {
         "sLast": "Último"
     },
     "oAria": {
-        
 
-        
+
+
         "sSortAscending": ": Ordenar colunas de forma ascendente",
         "sSortDescending": ": Ordenar colunas de forma descendente"
     } },
- 
 
- }); 
+
+ });
 
  var parametroUrl = function parametroUrl(sParam) {
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
@@ -542,9 +543,9 @@ $('#deleteform').attr('action','propostas/deletar/'+data[0]);
   $('#paginicioedit').val(data[6]);
   $('#diaparcelaedit').val(data[7]);
   $('#statusedit').val(data[8]);
-  
 
-  
+
+
 
 $('#editarform').attr('action','propostas/editar/'+data[0]);
 $('#editar').modal('show');
@@ -554,8 +555,7 @@ $('#editar').modal('show');
 
 
  });
- 
+
 </script>
 
 @endsection
-
